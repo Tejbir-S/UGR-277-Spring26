@@ -1,0 +1,10 @@
+﻿input_text,model_1_sentiment_label,model_1_sentiment_score,model_2_zeroshot_label,model_2_zeroshot_score,model_3_ner_entities,model_4_groq_classification,notes,tested_at
+Unauthorized login from IP 198.51.100.4 traced to Moscow targeting user John Miller at 3:47 AM,NEGATIVE,0.9961,possible anomaly,0.9,"{""entity_group"":""LOC"",""score"":0.9996966,""word"":""Moscow"",""start"":50,""end"":56}",HIGH: The unauthorized login attempt from an IP traced to Moscow targeting a specific user early in the morning suggests a malicious and targeted attack that requires immediate attention.,,3/14/2026 3:22pm
+Routine firewall rule update completed on fw-01 during scheduled maintenance window,NEGATIVE,0.9986,routine activity,1.0,{},"INFORMATIONAL
+
+Reasoning: The update of a routine firewall rule on a specific device during the scheduled maintenance window typically poses minimal risk and is expected behavior.",,3/14/2026 3:22pm
+Phishing email with spoofed Amazon domain detected targeting finance@acmecorp.com,NEGATIVE,0.9959,possible anomaly,0.8,"{""entity_group"":""ORG"",""score"":0.99667954,""word"":""Amazon"",""start"":28,""end"":34}",HIGH: This alert is classified as HIGH because a spoofed email targeting a financial department could potentially lead to a significant loss or compromise of sensitive financial information.,,3/14/2026 3:22pm
+Multiple failed SSH attempts from Beijing IP on Cloudflare production server — 47 attempts in 5 minutes,NEGATIVE,0.9994,possible anomaly,0.8,"{""entity_group"":""MISC"",""score"":0.9697967,""word"":""SS"",""start"":16,""end"":18}",HIGH: This SSH attempt alert indicates a potentially malicious login attempt and warrants investigation due to the high frequency and automated nature of the attempts.,,3/14/2026 3:22pm
+System resource utilization normal across all monitored hosts — no anomalies detected,NEGATIVE,0.9880,routine activity,1.0,{},"INFORMATIONAL
+
+The alert is classified as INFORMATIONAL because it indicates a normal and expected system state, with no indication of any issues or anomalies requiring immediate attention.",,3/14/2026 3:22pm
