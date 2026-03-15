@@ -1,7 +1,7 @@
 # Model Comparison Report — Week 4
 **Name:** Tejbir Singh
 
-**Date:** 3/14/2025
+**Date:** 3/15/2025
 
 **Capstone Project:** Financial Fraud Detection System
 
@@ -31,29 +31,27 @@
 | 5 | NEGATIVE (0.9880) | routine activity | {} | INFORMATIONAL |
 
 ## Analysis
-**Where models agreed:** All models agreed on the 2 routine records that showed normal activity.
+**Where models agreed:** All models agreed on the 2 routine records that showed normal activity. The hugging face snetiment analyzer defined them as negative, the zero-shot classifier labeled them as routine activity, the NER model did not detect meaningful entities, and Groq concluded them as informational.
 
-**Where models disagreed:** [Which records got different classifications? What might explain the difference?] 
+**Where models disagreed:** The sentiment model labaled every record as negative because it is designed to detect emotional tone rather than security risks; every technical log entry appear as negative regardless of being a threat or not. The zero-shot and Groq models were able to better interpret the meaning of the text and distinguish them as suspicious activity.  
 
-**Most accurate model overall:** Based on the 5 records, Groq Llama 3 8B gave the most sensisble results.
+**Most accurate model overall:** Based on the 5 records, Groq Llama 3 8B gave the most sensisble results. Groq was able to correctly separate high-risk events from routine activities and provide detailed reasoning for these classifications. 
 
-**Fastest/most practical:** [Which model would be easiest to use at scale?]
+**Fastest/most practical:** The Hugging Face models are always going to be faster and easier to integrate because of they require simple API calls and structured outputs. However, Groq's LLM provides detailed analysis, resulting at a higher computational call and a bit slower delivery. A real-world application would be able to utilize both to filter events that require deeper investigation.
 
 ## Recommended Models for My Capstone Component
 **Component:** Case Management
 
-**Primary model:** Groq Llama 3 8B — [1 sentence: why this one for your task]
+**Primary model:** Groq Llama 3 8B — This model is able to display contextual undestanding and reasoning, making it well equipped for analyzing suspicious activity and giving a brief description that analysts can use to prioritize cases.
 
-**Secondary model (if applicable):** [Name] — [1 sentence: what role it plays]
+**Secondary model (if applicable):** Facebook/bartl-large-mnli — The zero-shot classifier is a quick filter to label events as routine activity or potential anomalies before deeper analysis is conducted.
 
 **Rejected models and why:**
-- [Model name]: [1-2 sentences on why it's not the right fit]
-- [Model name]: [1-2 sentences on why it's not the right fit]
+- Distilbert-base-uncased-finetuned-sst-2-english: A sentiment analyzer is simply incompatiable with the needs of cybersecurity analysis. Every record was labeled as negative regardless of the event presented.
+- Dslim/bert-large-NER: The NER model extracted entities such as locations and organizations, but failed to present any useful information to determine what type of event had occurred. 
 
 ## Failure Cases and Limitations
-[Describe at least one case where a model gave a wrong or surprising result.
-What does this tell you about using this model in production?]
+One notable limitation was depicted by the sentiment analysis model, which failed to recognize obvious threats and labeled everything as negative. This illustrates that models trained for language may not perform well on speciailzied cybersecurity logs when attempting to identify fraudulent activity. The NER model also depicted limitations by extracting information that failed to be relevant to determining whether the activity presented was malicious. It is important that the AI model integrated in your workflow is aligned with the task and system you are attempting to create. 
 
 ## Next Steps
-[What would you test next if you had more time? More records? Different labels?
-A different model you didn't test this week?]
+If more time was available, additional testing would include a larger dataset of varied cyebrsecurity events, rather than the limited five. Incorporating other models trained for anomaly detection would also be valuable to identify which would be best to incorporate. Another potential improvement is combining multiple models in a pieline, where lightweight classifers are able to filter routine events from potential anomalies, and an LLM can perform deeper analysis for what needs attention.
