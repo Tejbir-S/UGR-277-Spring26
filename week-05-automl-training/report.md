@@ -59,21 +59,23 @@ My precision is higher than my recall. This means that when my model flagged som
 | Record 5 | 0.9880 | 0.9999 | 0.8388 | Fine-Tuned A |
 
 ### Analysis
-**Generic model strengths:** [When did the generic model perform well?]
-**Generic model weaknesses:** [When did it fail or give low confidence?]
-**Fine-tuned model advantage:** [Where did the fine-tuned models clearly
-outperform the generic one?]
-**Biggest surprise:** [What result did you not expect?]
+**Generic model strengths:** The generic sentiment model performed consistently in terms of confidence, often producing very high scores across all inputs. The model is effective at detecting emotional tone, especially phishing emails that will rely on urgency, fear, or excitement. Phishing emails that use exaggerated language will result in the model responding with high confidence. 
+
+**Generic model weaknesses:** This model fails conceptually because it is not designed for phishing detection. Because the model reads sentiment rather than intent, it can easily misinterpret legitimate urgent emails as malicious, or fail to detect well-crafted emails that use neutral language. The scores and classifications are both misleading because it doesn't refelct the task meant to be done. 
+
+**Fine-tuned model advantage:** Fine-Tuned model A consistently outperformed both the generic and spam model because it is specifically trained to read phishing-related patterns such as suspicious URLs, impersonation attempts, and deceptive structures. 
+
+**Biggest surprise:** The biggest surprise was how confident the generic model was despite being poorly suited for the task. These scores ere very close to those of Fine-Tuned model A, which would easily mislead someone into believing the information provided is reliable.
 
 ### Recommended Model for My Capstone Component
 **Component:** Case Management
 
-**Primary model:** [Name] — [Why this model for your task]
-**Confidence threshold:** [What threshold would you use? Why?]
-**Priority metric:** [Precision, Recall, or F1? Why does this matter for your
-project?]
+**Primary model:** cybersectony/phishing-email-detection-distilbert_v2.4.1 — This model is the best fit because it is trained for phishing detection, aligning directly with the goals of identifying fraudulent communication in case management workflows. Its consistently high confidence and task-specific design make it more reliable than the other two models. However, it should be noted that model that can encompass cybersecurity reports for anomalous activity would be better suited for the project. 
+
+**Confidence threshold:** A high threshold of 0.90 is necessary to reduce false positives in a case management sysem. Flagged cases require manual review or escalation, so maintaing high confidence ensures that resources are not wasted on benign inputs. 
+
+**Priority metric:** Recall will be the priority metric because missing a phishing attempt is more dangerous than incorrectly flagging legitimate messages. Prioritizing recall ensures that as many potential threats as possible are captured, even if this includes in false positives. 
+
 ---
 ## Limitations & Next Steps
-[What would you do differently with more data or time? Would you fine-tune your
-own
-model? What additional models would you test?]
+This current evaluation is limited by a small dataset and narrow range of test inputs, which does not fully represent real-world phishing attempts. More time and data would allow me to expand the dataset to include diverse phishing strategies and modern attack methods. It should also be considered that I may need to focus on fine-tuning the model for financial fraud scenarios to be more effective in my capstone project. 
